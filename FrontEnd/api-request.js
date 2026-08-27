@@ -6,10 +6,16 @@ let data = [];
 async function getPhotos() {
 
      const response = await fetch("http://localhost:5678/api/works");
-     const data = await response.json();
-     
-      data.forEach(photo => {
+     data = await response.json();
 
+     displayPhotos(data);
+}
+
+function displayPhotos(photos) {
+    gallery.innerHTML = "";
+
+    
+    photos.forEach(photo => {
       const card = document.createElement("div");
       card.classList.add("card");
 
@@ -33,8 +39,15 @@ getPhotos();
 const filterAll = document.querySelector(".filterAll");
 
 filterAll.addEventListener("click", function () {
-  const dataFilter = data.filter(function (photo) {
-    console.log(data);
+  displayPhotos(data);
+  console.log(data)
+});
+
+const filterObject = document.querySelector(".filterObject");
+
+filterObject.addEventListener("click", function () {
+  const object = data.filter(function (data) {
+    return data.name = "Objets"
   });
-  console.log(dataFilter)
+  console.log(object)
 });
