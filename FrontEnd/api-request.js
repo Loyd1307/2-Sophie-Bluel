@@ -26,3 +26,13 @@ async function getPhotos() {
 }
 
 getPhotos();
+
+/** fontion filtre inachevé **/
+const filterAll = document.querySelector(".filterAll");
+
+filterAll.addEventListener("click", function () {
+  const dataFilter = data.filter(function (data) {
+    return data.userId === 1;
+  });
+  console.log(dataFilter)
+});
