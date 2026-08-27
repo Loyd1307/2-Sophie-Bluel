@@ -47,7 +47,7 @@ const filterObject = document.querySelector(".filterObject");
 
 filterObject.addEventListener("click", function () {
   const object = data.filter(function (data) {
-    return data.name = "Objets"
+    return data.categoryId === 1
   });
   console.log(object)
 });
