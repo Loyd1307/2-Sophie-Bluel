@@ -40,14 +40,31 @@ const filterAll = document.querySelector(".filterAll");
 
 filterAll.addEventListener("click", function () {
   displayPhotos(data);
-  console.log(data)
 });
 
 const filterObject = document.querySelector(".filterObject");
 
 filterObject.addEventListener("click", function () {
-  const object = data.filter(function (data) {
+  const objects = data.filter(function (data) {
     return data.categoryId === 1
   });
-  console.log(object)
+  displayPhotos(objects)
+});
+
+const filterAppartement = document.querySelector(".filterAppartement");
+
+filterAppartement.addEventListener("click", function () {
+  const appartements = data.filter(function (data) {
+    return data.categoryId === 2
+  });
+  displayPhotos(appartements)
+});
+
+const filterHotel = document.querySelector(".filterHotel");
+
+filterHotel.addEventListener("click", function () {
+  const hotels = data.filter(function (data) {
+    return data.categoryId === 3
+  });
+  displayPhotos(hotels)
 });
