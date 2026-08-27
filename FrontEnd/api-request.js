@@ -1,6 +1,8 @@
 
 const gallery = document.querySelector(".gallery");
 
+let data = [];
+
 async function getPhotos() {
 
      const response = await fetch("http://localhost:5678/api/works");
@@ -31,8 +33,8 @@ getPhotos();
 const filterAll = document.querySelector(".filterAll");
 
 filterAll.addEventListener("click", function () {
-  const dataFilter = data.filter(function (data) {
-    return data.userId === 1;
+  const dataFilter = data.filter(function (photo) {
+    return photo.userId === 1;
   });
   console.log(dataFilter)
 });
