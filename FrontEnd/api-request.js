@@ -35,7 +35,7 @@ function displayPhotos(photos) {
 
 getPhotos();
 
-/** fontion filtre **/
+/** fonction filtre **/
 const filterAll = document.querySelector(".filterAll");
 
 filterAll.addEventListener("click", function () {
