@@ -34,7 +34,7 @@ const filterAll = document.querySelector(".filterAll");
 
 filterAll.addEventListener("click", function () {
   const dataFilter = data.filter(function (photo) {
-    return photo.userId === 1;
+    console.log(data);
   });
   console.log(dataFilter)
 });

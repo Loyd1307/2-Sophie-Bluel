@@ -135,8 +135,30 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
+
+.filter {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	padding-bottom: 50px;
+}
+
+.filter button {
+	border-radius: 60px;
+	padding: 5px 10px;
+	border: solid 1px #1D6154;
+	color: #1D6154;
+	font-size: 16px;
+	background-color: white;
+	font-family: syne;
+}
+
+.filter button:active {
+	background-color: #1D6154;
+	color: white;
+}
+
 #contact {
 	width: 50%;
 margin: auto;
