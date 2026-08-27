@@ -144,7 +144,7 @@ li:hover {
 	padding-bottom: 50px;
 }
 
-.filter button {
+.filterButton {
 	border-radius: 60px;
 	padding: 5px 10px;
 	border: solid 1px #1D6154;
@@ -154,7 +154,7 @@ li:hover {
 	font-family: syne;
 }
 
-.filter button:active {
+.filterButton.active {
 	background-color: #1D6154;
 	color: white;
 }

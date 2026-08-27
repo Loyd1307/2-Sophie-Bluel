@@ -35,7 +35,7 @@ function displayPhotos(photos) {
 
 getPhotos();
 
-/** fontion filtre inachevé **/
+/** fontion filtre **/
 const filterAll = document.querySelector(".filterAll");
 
 filterAll.addEventListener("click", function () {
@@ -67,4 +67,19 @@ filterHotel.addEventListener("click", function () {
     return data.categoryId === 3
   });
   displayPhotos(hotels)
+});
+
+/* Gestion propriété CSS filtres */
+
+const filtersButton = document.querySelectorAll(".filterButton");
+
+filtersButton.forEach(button => {
+  button.addEventListener("click", function () {
+
+    filtersButton.forEach (button => {
+    button.classList.remove("active");
+  });
+
+  this.classList.add("active");
+  });
 });
