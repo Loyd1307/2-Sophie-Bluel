@@ -177,13 +177,13 @@ margin: auto;
 	flex-direction: column;
 }
 
-#contact input {
+input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+label {
 	margin: 2em 0 1em 0;
 }
 #contact textarea {
@@ -208,3 +208,37 @@ footer nav ul {
 	margin: 2em
 }
 
+
+/** CSS login.html **/
+
+header {
+	padding-bottom: 50px;
+}
+
+main {
+	padding-bottom: 200px;
+}
+.login-title {
+	text-align: center;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+}
+
+.login-form input {
+	width: 380px;
+	height: 51px;
+}
+
+#submit {
+	width: 180px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
