@@ -32,9 +32,35 @@ form.addEventListener("submit", async (event) => {
 
     localStorage.setItem("token", data.token);
 
+    console.log("Token reçu :", data.token);
+    console.log("Token enregistré :", localStorage.getItem("token"));
+
     window.location.href = "index.html";
 
   } catch (error) {
     errorElement.textContent = error.message;
   }
+});
+
+const token = localStorage.getItem("token");
+
+const loginButton = document.getElementById("login")
+const logoutButton = document.getElementById("logout")
+
+if (token) {
+
+  loginButton.style.display = "none";
+  logoutButton.style.display = "inline";
+
+} else {
+
+  loginButton.style.display = "inline";
+  logoutButton.style.display = "none";
+}
+
+logoutButton.addEventListener("click", () => {
+
+    localStorage.removeItem("token");
+
+    window.location.href = "login.html";
 });

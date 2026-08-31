@@ -222,6 +222,10 @@ main {
 	text-align: center;
 }
 
+#logout {
+	display: none;
+}
+
 #loginForm {
 	display: flex;
 	flex-direction: column;
