@@ -218,18 +218,18 @@ header {
 main {
 	padding-bottom: 200px;
 }
-.login-title {
+.loginTitle {
 	text-align: center;
 }
 
-.login-form {
+#loginForm {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 	align-items: center;
 }
 
-.login-form input {
+#loginForm input {
 	width: 380px;
 	height: 51px;
 }
