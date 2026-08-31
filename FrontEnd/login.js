@@ -13,6 +13,7 @@ form.addEventListener("submit", async (event) => {
   errorElement.textContent = "";
 
   try {
+
     const response = await fetch("http://localhost:5678/api/users/login" , {
       method: "POST",
       headers: {
@@ -42,7 +43,11 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
+console.log("index.js chargé");
+
 const token = localStorage.getItem("token");
+
+console.log("Token récupéré dans index :", token);
 
 const loginButton = document.getElementById("login")
 const logoutButton = document.getElementById("logout")
