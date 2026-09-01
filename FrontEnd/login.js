@@ -27,14 +27,16 @@ form.addEventListener("submit", async (event) => {
 
   const data = await response.json();
 
+
+localStorage.setItem("token", data.token);
+
     if (!response.ok) {
       throw new Error(data.message || "Erreur dans l’identifiant ou le mot de passe");
     }
 
     localStorage.setItem("token", data.token);
 
-    console.log("Token reçu :", data.token);
-    console.log("Token enregistré :", localStorage.getItem("token"));
+   console.log("TOKEN APRÈS ENREGISTREMENT :", localStorage.getItem("token"));
 
     window.location.href = "index.html";
 

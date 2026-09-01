@@ -1,3 +1,28 @@
+/* script redirection login/logout */
+
+const token = localStorage.getItem("token");
+
+const login = document.getElementById("login");
+const logout = document.getElementById("logout");
+const edition = document.getElementById("edition");
+
+if (token) {
+    login.style.display = "none";
+    logout.style.display = "inline";
+    edition.style.display = "flex";
+} else {
+    login.style.display = "inline";
+    logout.style.display = "none";
+    edition.style.display = "none";
+}
+
+logout.addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.href = "login.html";
+});
+
+
+/* script affichage des projets */
 
 const gallery = document.querySelector(".gallery");
 
@@ -36,6 +61,7 @@ function displayPhotos(photos) {
 getPhotos();
 
 /** fonction filtre **/
+
 const filterAll = document.querySelector(".filterAll");
 
 filterAll.addEventListener("click", function () {

@@ -218,6 +218,19 @@ header {
 main {
 	padding-bottom: 200px;
 }
+
+#edition {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	color: white;
+	padding-block: 22px;
+	gap: 10px;
+	width: 100%;
+	font-size: 16px;
+}
+
 .loginTitle {
 	text-align: center;
 }
