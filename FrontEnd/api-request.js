@@ -5,15 +5,24 @@ const token = localStorage.getItem("token");
 const login = document.getElementById("login");
 const logout = document.getElementById("logout");
 const edition = document.getElementById("edition");
+const filter = document.getElementById("filter");
+const editionProjet = document.getElementById("editionProjet");
 
 if (token) {
+
     login.style.display = "none";
     logout.style.display = "inline";
     edition.style.display = "flex";
+    filter.style.display = "none";
+    editionProjet.style.display = "flex";
+
 } else {
+  
     login.style.display = "inline";
     logout.style.display = "none";
     edition.style.display = "none";
+    filter.style.display = "flex";
+    editionProjet.style.display = "none";
 }
 
 logout.addEventListener("click", () => {

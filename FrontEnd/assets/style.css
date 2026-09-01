@@ -137,7 +137,21 @@ li:hover {
 	width: 100%;
 }
 
-.filter {
+.projets {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	gap: 10px;
+}
+
+#editionProjet {
+	padding-block: 10px;
+	padding-inline: 20px;
+	display: none;
+	gap: 5px;
+}
+
+#filter {
 	display: flex;
 	gap: 10px;
 	justify-content: center;

@@ -36,12 +36,10 @@ localStorage.setItem("token", data.token);
 
     localStorage.setItem("token", data.token);
 
-   console.log("TOKEN APRÈS ENREGISTREMENT :", localStorage.getItem("token"));
-
     window.location.href = "index.html";
 
   } catch (error) {
-    errorElement.textContent = error.message;
+    errorElement.textContent = "Erreur dans l’identifiant ou le mot de passe";
   }
 });
 
