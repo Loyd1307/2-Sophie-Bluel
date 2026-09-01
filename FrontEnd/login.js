@@ -28,7 +28,7 @@ form.addEventListener("submit", async (event) => {
   const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.message || "Identifiants incorrects");
+      throw new Error(data.message || "Erreur dans l’identifiant ou le mot de passe");
     }
 
     localStorage.setItem("token", data.token);
