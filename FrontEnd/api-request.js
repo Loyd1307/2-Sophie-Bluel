@@ -33,7 +33,7 @@ logout.addEventListener("click", () => {
 
 /* script affichage des projets */
 
-const gallery = document.querySelector(".gallery");
+const gallery = document.getElementById("projectGallery");
 
 let data = [];
 
