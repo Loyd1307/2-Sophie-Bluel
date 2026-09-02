@@ -41,3 +41,33 @@ const stopPropagation = function (e) {
 document.querySelectorAll(".js-modal").forEach(a => {
     a.addEventListener("click", openModal);
 });
+
+const miniGallery = document.getElementById("modalGallery");
+
+async function getModalPhotos() {
+
+     const response = await fetch("http://localhost:5678/api/works");
+     data = await response.json();
+
+     displayModalPhotos(data);
+}
+
+function displayModalPhotos(photos) {
+    miniGallery.innerHTML = "";
+
+    photos.forEach(photo => {
+
+        const card = document.createElement("div");
+        card.classList.add("card");
+    
+        const image = document.createElement("img");
+        image.src = photo.imageUrl;
+
+        card.appendChild(image);
+
+        miniGallery.appendChild(card);
+      
+    });
+}
+
+getModalPhotos();

@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./api-request.js" defer ></script>
 	<script src="./modal.js" defer ></script>
+	<script src="./add-photo.js" defer></script>
 </head>
 <body>
 <div id="edition">
@@ -52,10 +53,24 @@
 		<aside id="modal1" class="modal" aria-hidden="true" style="display: none;" aria-modal="true">
 			<div class="modal-wrapper js-modal-stop">
 				<i id="js-modal-close" class="fa-solid fa-x"></i>
-				<h1>Galerie photo</h1>
+				<p class="modal-title">Galerie photo</p>
 				<div class="gallery" id="modalGallery">
 				</div>
 				<button id="addPhoto">Ajouter une photo</button>
+			</div>
+			<div id="addPhotoModal" class="modal" aria-hidden="true" style="display: none;" aria-modal="true">
+				<form id="addPhotoForm">
+        			<input type="file" id="photo" name="image">
+        			<input type="text" id="title" name="title">
+        
+        			<select id="category" name="category">
+            			<option value="1">Objets</option>
+            			<option value="2">Appartements</option>
+            			<option value="3">Hôtels & restaurants</option>
+        			</select>
+
+        			<button type="submit">Valider</button>
+    			</form>
 			</div>
 		</aside>
 		

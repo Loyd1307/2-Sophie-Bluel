@@ -43,11 +43,7 @@ localStorage.setItem("token", data.token);
   }
 });
 
-console.log("index.js chargé");
-
 const token = localStorage.getItem("token");
-
-console.log("Token récupéré dans index :", token);
 
 const loginButton = document.getElementById("login")
 const logoutButton = document.getElementById("logout")
