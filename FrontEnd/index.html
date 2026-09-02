@@ -11,6 +11,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./api-request.js" defer ></script>
+	<script src="modal.js" defer ></script>
 </head>
 <body>
 <div id="edition">
@@ -45,10 +46,18 @@
 		<div class="projets">
 			<h2>Mes Projets</h2>
 		<div id="editionProjet">
-			<i class="fa-regular fa-pen-to-square"></i>
-			<p>Modifier</p>
+			<a class="js-modal" href="#modal1"><i class="fa-regular fa-pen-to-square"></i>Modifier</a>
 		</div>
 		</div>
+		<aside id="modal1" class="modal" aria-hidden="true" style="display: none;" aria-modal="true">
+			<div class="modal-wrapper js-modal-stop">
+				<i class="js-modal-close fa-solid fa-x"></i>
+				<h1>Galerie photo</h1>
+				<div class="gallery">
+				</div>
+				<button id="addPhoto">Ajouter une photo</button>
+			</div>
+		</aside>
 			<div id="filter">
 				<button class="filterButton filterAll active">Tous</button>
 				<button class="filterButton filterObject">Objets</button>

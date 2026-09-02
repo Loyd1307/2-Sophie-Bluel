@@ -265,6 +265,27 @@ main {
 	height: 51px;
 }
 
+.modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-wrapper {
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	width: 630px;
+	height: 688px;
+	overflow: auto;
+}
+
 #submit {
 	width: 180px;
 	height: 36px;
