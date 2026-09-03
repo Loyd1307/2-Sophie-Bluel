@@ -58,12 +58,18 @@
 				</div>
 				<button id="addPhoto">Ajouter une photo</button>
 			</div>
-			<div id="addPhotoModal" class="modal" aria-hidden="true" style="display: none;" aria-modal="true">
+		</aside>
+		<div id="modal2" class="modal" aria-hidden="true" style="display: none;" aria-modal="true">
+			<div class="modal-wrapper js-modal-stop">
+				<p class="modal-title">Ajout photo</p>
 				<form id="addPhotoForm">
-        			<input type="file" id="photo" name="image">
+					<label for="photo">+ Ajouter photo</label>
+        			<input type="file" id="photo" name="image" accept="image/png, image/jpeg">
+
+					<label for="title">Titre</label>
         			<input type="text" id="title" name="title">
         
-        			<select id="category" name="category">
+        			<select id="category" name="category" value="Catégorie">
             			<option value="1">Objets</option>
             			<option value="2">Appartements</option>
             			<option value="3">Hôtels & restaurants</option>
@@ -72,16 +78,16 @@
         			<button type="submit">Valider</button>
     			</form>
 			</div>
-		</aside>
+		</div>
 		
-			<div id="filter">
-				<button class="filterButton filterAll active">Tous</button>
-				<button class="filterButton filterObject">Objets</button>
-				<button class="filterButton filterAppartement">Appartements</button>
-				<button class="filterButton filterHotel">Hotels & restaurants</button>
-			</div>
-			<div class="gallery" id="projectGallery">
-			</div>
+		<div id="filter">
+			<button class="filterButton filterAll active">Tous</button>
+			<button class="filterButton filterObject">Objets</button>
+			<button class="filterButton filterAppartement">Appartements</button>
+			<button class="filterButton filterHotel">Hotels & restaurants</button>
+		</div>
+		<div class="gallery" id="projectGallery">
+		</div>
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>
