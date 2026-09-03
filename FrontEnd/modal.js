@@ -58,12 +58,22 @@ function displayModalPhotos(photos) {
     photos.forEach(photo => {
 
         const card = document.createElement("div");
-        card.classList.add("card");
+        card.classList.add("card-modal");
+
+        const container = document.createElement("div");
+        container.className = "image-container";
+
     
         const image = document.createElement("img");
         image.src = photo.imageUrl;
 
-        card.appendChild(image);
+        const trashIcon = document.createElement("i");
+        trashIcon.classList.add("fa-solid", "fa-trash-can", "trash-icon", "fa-lg");
+        trashIcon.setAttribute("data-id", photo.id);
+
+        container.appendChild(image);
+        container.appendChild(trashIcon);
+        card.appendChild(container);
 
         miniGallery.appendChild(card);
       

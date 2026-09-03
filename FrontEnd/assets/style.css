@@ -332,6 +332,27 @@ main {
 	
 }
 
+.card-modal {
+	width: 77px;
+	height: 103px;
+}
+
+.image-container {
+	position: relative;
+	width: 100%;
+}
+
+.trash-icon {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: 10px;
+	color: white;
+	background-color: black;
+	cursor: pointer;
+	padding: 8px;
+}
+
 #submit {
 	width: 180px;
 	height: 36px;
