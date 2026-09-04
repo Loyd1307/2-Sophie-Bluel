@@ -16,7 +16,7 @@ const openModal = function (e) {
 
     modal = target;
 
-    modal.querySelector("#js-modal-close").addEventListener("click", closeModal);
+    modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
     modal.addEventListener("click", closeModal);
     modal.querySelector(".modal-wrapper").addEventListener("click", stopPropagation);
 };

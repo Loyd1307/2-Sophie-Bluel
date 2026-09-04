@@ -284,10 +284,10 @@ main {
 	padding-bottom: 50px;
 }
 
-#js-modal-close {
+.js-modal-close {
 	display: flex;
 	justify-content: flex-end;
-	font-size: 24px;
+	font-size: 15px;
 	cursor: pointer;
 }
 
@@ -357,12 +357,92 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 20px;
+	gap: 10px;
+}
+
+#editionProjet2 {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+}
+
+#js-modal-back {
+	font-size: 21px;
+	cursor: pointer;
+}
+
+#addPhotoForm div {
+	display: flex;
+	flex-direction: column;
 }
 
 #addPhotoForm input {
-	width: 380px;
+	width: 420px;
 	height: 51px;
+}
+
+#addPhotoForm select {
+	width: 420px;
+	height: 51px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+}
+
+.border {
+	padding-bottom: 50px;
+	border-bottom: solid 1px #B3B3B3;
+}
+
+.photoPreview {
+	align-items: center;
+	justify-content: center;
+	width: 420px;
+	height: 169px;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: #E8F1F6;
+	gap: 3px;
+	border: none;
+	font-family: "work sans";
+	color: #306685;
+}
+
+.photoPreview i {
+	font-size: 68px;
+	color: #B9C5CC;
+	margin: 10px;
+}
+
+#validateButton {
+	background-color: #A7A7A7;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 60px;
+	font-size: 14px;
+	cursor: pointer;
+	width: 237px;
+	height: 36px;
+	font-family: "syne";
+	margin-top: 40px;
+}
+
+#addPhotoButton {
+	background-color: #CBD6DC;
+	color: #306685;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 60px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.photo-info {
+	font-size: 10px;
+	color: #B9C5CC;
+	margin-top: 5px;
 }
 
 #submit {

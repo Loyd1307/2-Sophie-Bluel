@@ -52,7 +52,7 @@
 		</div>
 		<aside id="modal1" class="modal" aria-hidden="true" style="display: none;" aria-modal="true">
 			<div class="modal-wrapper js-modal-stop">
-				<i id="js-modal-close" class="fa-solid fa-x"></i>
+				<i class="fa-solid fa-x js-modal-close"></i>
 				<p class="modal-title">Galerie photo</p>
 				<div class="gallery" id="modalGallery">
 				</div>
@@ -61,21 +61,31 @@
 		</aside>
 		<div id="modal2" class="modal" aria-hidden="true" style="display: none;" aria-modal="true">
 			<div class="modal-wrapper js-modal-stop">
+				<div id="editionProjet2">
+					<i class="fa-solid fa-arrow-left-long" id="js-modal-back"></i>
+					<i class="fa-solid fa-x js-modal-close"></i>
+				</div>
 				<p class="modal-title">Ajout photo</p>
 				<form id="addPhotoForm">
-					<label for="photo">+ Ajouter photo</label>
-        			<input type="file" id="photo" name="image" accept="image/png, image/jpeg">
-
-					<label for="title">Titre</label>
-        			<input type="text" id="title" name="title">
-        
+					<div class="photoPreview">
+						<i class="fa-regular fa-image"></i>
+						<button type="button" id="addPhotoButton">+ Ajouter photo</button>
+						<p class="photo-info">jpg, png : 4mo max</p>
+					</div>
+					<div>
+						<label for="title">Titre</label>
+        				<input type="text" id="title" name="title">
+					</div>
+					<div class="border">
+					<label for="category">Catégorie</label>
         			<select id="category" name="category" value="Catégorie">
+						<option value="" disabled selected></option>
             			<option value="1">Objets</option>
             			<option value="2">Appartements</option>
             			<option value="3">Hôtels & restaurants</option>
         			</select>
-
-        			<button type="submit">Valider</button>
+					</div>
+					<button id="validateButton" type="submit">Valider</button>
     			</form>
 			</div>
 		</div>
