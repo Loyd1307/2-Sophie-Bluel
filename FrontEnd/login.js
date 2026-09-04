@@ -25,16 +25,14 @@ form.addEventListener("submit", async (event) => {
       })
     });
 
+       if (!response.ok) {
+      throw new Error(data.message || "Erreur dans l’identifiant ou le mot de passe");
+      }
+
   const data = await response.json();
 
 
 localStorage.setItem("token", data.token);
-
-    if (!response.ok) {
-      throw new Error(data.message || "Erreur dans l’identifiant ou le mot de passe");
-    }
-
-    localStorage.setItem("token", data.token);
 
     window.location.href = "index.html";
 

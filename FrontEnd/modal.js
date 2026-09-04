@@ -4,6 +4,9 @@ let modal = null;
 const openModal = function (e) {
     e.preventDefault();
 
+    const modalId = e.currentTarget.dataset.modal;
+    console.log("Modal ID:", modalId); // Test : Log the modal ID to the console
+
     const target = document.querySelector(
         e.currentTarget.getAttribute("href")
     );
