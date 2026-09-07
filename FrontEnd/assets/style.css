@@ -429,19 +429,23 @@ main {
 	margin-top: 40px;
 }
 
-#addPhotoButton {
+#addPhotoLabel {
 	background-color: #CBD6DC;
 	color: #306685;
 	border: none;
-	padding: 10px 20px;
+	padding: 10px 10px;
 	border-radius: 60px;
 	font-size: 14px;
 	cursor: pointer;
+	width: 173px;
+	text-align: center;
+	margin: 0 auto;
+	box-sizing: border-box;
 }
 
 .photo-info {
 	font-size: 10px;
-	color: #B9C5CC;
+	color: #444444;
 	margin-top: 5px;
 }
 

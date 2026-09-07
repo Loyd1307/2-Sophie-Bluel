@@ -69,7 +69,8 @@
 				<form id="addPhotoForm">
 					<div class="photoPreview">
 						<i class="fa-regular fa-image"></i>
-						<button type="button" id="addPhotoButton">+ Ajouter photo</button>
+						<label for="addPhotoButton" id="addPhotoLabel">+ Ajouter photo</label>
+						<input type="file" id="addPhotoButton" name="image" accept="image/png, image/jpeg" style="display: none;">
 						<p class="photo-info">jpg, png : 4mo max</p>
 					</div>
 					<div>
@@ -80,9 +81,6 @@
 					<label for="category">Catégorie</label>
         			<select id="category" name="category" value="Catégorie">
 						<option value="" disabled selected></option>
-            			<option value="1">Objets</option>
-            			<option value="2">Appartements</option>
-            			<option value="3">Hôtels & restaurants</option>
         			</select>
 					</div>
 					<button id="validateButton" type="submit">Valider</button>
