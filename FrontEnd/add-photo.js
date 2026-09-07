@@ -1,12 +1,42 @@
+import { closeModal, stopPropagation } from "./modules.js";
+
 const addPhotoButton = document.getElementById("addPhoto");
+const modal2 = document.getElementById("modal2");
 
-addPhotoButton.addEventListener("click", function () {
-    const modal2 = document.getElementById("modal2");
+if (addPhotoButton && modal2) {
 
-    modal2.style.display = "flex";
-    modal2.removeAttribute("aria-hidden");
-    modal2.setAttribute("aria-modal", "true");
+    addPhotoButton.addEventListener("click", function () {
+        modal2.style.display = "flex";
+        modal2.removeAttribute("aria-hidden");
+        modal2.setAttribute("aria-modal", "true");
+    });
+
+    modal2
+        .querySelector(".js-modal-close")
+        .addEventListener("click", closeModal);
+
+    modal2.addEventListener("click", closeModal);
+
+    modal2
+        .querySelector(".modal-wrapper")
+        .addEventListener("click", stopPropagation);
+}
+
+const previousButton = document.getElementById("previousModal");
+const modal1 = document.getElementById("modal1");
+
+previousButton.addEventListener("click", function () {
+    // Fermer la modale 2
+    modal2.style.display = "none";
+    modal2.setAttribute("aria-hidden", "true");
+    modal2.removeAttribute("aria-modal");
+
+    // Réouvrir la modale 1
+    modal1.style.display = "flex";
+    modal1.removeAttribute("aria-hidden");
+    modal1.setAttribute("aria-modal", "true");
 });
+
 
 async function getCategories() {
     const response = await fetch("http://localhost:5678/api/categories");

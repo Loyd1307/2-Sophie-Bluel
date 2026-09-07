@@ -265,7 +265,7 @@ main {
 	height: 51px;
 }
 
-.modal {
+.js-modal {
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -11,8 +11,10 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./api-request.js" defer ></script>
-	<script src="./modal.js" defer ></script>
-	<script src="./add-photo.js" defer></script>
+
+	<script type="module" src="./modal.js"></script>
+	<script type="module" src="./add-photo.js"></script>
+	<script type="module" src="./modules.js"></script>
 </head>
 <body>
 <div id="edition">
@@ -47,10 +49,10 @@
 		<div class="projets">
 			<h2>Mes Projets</h2>
 		<div id="editionProjet">
-			<a class="js-modal" href="#modal1" data-modal="modal1"><i class="fa-regular fa-pen-to-square"></i>Modifier</a>
+			<a class="js-modal-open" href="#modal1" data-modal="modal1"><i class="fa-regular fa-pen-to-square"></i>Modifier</a>
 		</div>
 		</div>
-		<aside id="modal1" class="modal" aria-hidden="true" style="display: none;" aria-modal="true">
+		<aside id="modal1" class="js-modal" aria-hidden="true" style="display: none;" aria-modal="true">
 			<div class="modal-wrapper js-modal-stop">
 				<i class="fa-solid fa-x js-modal-close"></i>
 				<p class="modal-title">Galerie photo</p>
@@ -59,10 +61,11 @@
 				<button id="addPhoto">Ajouter une photo</button>
 			</div>
 		</aside>
-		<div id="modal2" class="modal" aria-hidden="true" style="display: none;" aria-modal="true">
+		
+		<div id="modal2" class="js-modal" aria-hidden="true" style="display: none;" aria-modal="true">
 			<div class="modal-wrapper js-modal-stop">
 				<div id="editionProjet2">
-					<i class="fa-solid fa-arrow-left-long" id="js-modal-back"></i>
+					<i class="fa-solid fa-arrow-left-long" id="previousModal"></i>
 					<i class="fa-solid fa-x js-modal-close"></i>
 				</div>
 				<p class="modal-title">Ajout photo</p>

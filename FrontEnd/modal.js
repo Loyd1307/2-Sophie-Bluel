@@ -1,11 +1,8 @@
 
-let modal = null;
+import { closeModal, stopPropagation } from "./modules.js";
 
 const openModal = function (e) {
     e.preventDefault();
-
-    const modalId = e.currentTarget.dataset.modal;
-    console.log("Modal ID:", modalId); // Test : Log the modal ID to the console
 
     const target = document.querySelector(
         e.currentTarget.getAttribute("href")
@@ -17,33 +14,23 @@ const openModal = function (e) {
     target.removeAttribute("aria-hidden");
     target.setAttribute("aria-modal", "true");
 
-    modal = target;
+    target
+        .querySelector(".js-modal-close")
+        .addEventListener("click", closeModal);
 
-    modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
-    modal.addEventListener("click", closeModal);
-    modal.querySelector(".modal-wrapper").addEventListener("click", stopPropagation);
+    target.addEventListener("click", closeModal);
+
+    target
+        .querySelector(".modal-wrapper")
+        .addEventListener("click", stopPropagation);
 };
 
-const closeModal = function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (modal === null) return;
-
-    modal.style.display = "none";
-    modal.setAttribute("aria-hidden", "true");
-    modal.removeAttribute("aria-modal");
-
-    modal = null;
-};
-
-const stopPropagation = function (e) {
-    e.stopPropagation();
-};
-
-document.querySelectorAll(".js-modal").forEach(a => {
-    a.addEventListener("click", openModal);
+document.querySelectorAll(".js-modal-open").forEach(button => {
+    button.addEventListener("click", openModal);
 });
+
+
+/* Gestion de la galerie modale */
 
 const miniGallery = document.getElementById("modalGallery");
 
