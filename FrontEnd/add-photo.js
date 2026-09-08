@@ -1,4 +1,5 @@
 import { closeModal, stopPropagation } from "./modules.js";
+import { getModalPhotos } from "./modal.js";
 
 const addPhotoButton = document.getElementById("addPhoto");
 const modal2 = document.getElementById("modal2");
@@ -97,7 +98,9 @@ photoForm.addEventListener("submit", async function (v) {
 
         const work = await response.json();
 
-        console.log("Projet ajouté :", work);
+        await getModalPhotos();
+        await window.refreshProjectGallery();
+
 
         alert("Photo ajoutée avec succès !");
 

@@ -1,4 +1,3 @@
-
 import { closeModal, stopPropagation } from "./modules.js";
 
 const openModal = function (e) {
@@ -30,19 +29,85 @@ document.querySelectorAll(".js-modal-open").forEach(button => {
 });
 
 
-/* Gestion de la galerie modale */
+/* =========================
+   GALERIE MODALE
+========================= */
 
 const miniGallery = document.getElementById("modalGallery");
 
-async function getModalPhotos() {
 
-     const response = await fetch("http://localhost:5678/api/works");
-     data = await response.json();
+export async function getModalPhotos() {
 
-     displayModalPhotos(data);
+    try {
+        const response = await fetch("http://localhost:5678/api/works");
+
+        if (!response.ok) {
+            throw new Error("Erreur lors de la récupération des photos");
+        }
+
+        const data = await response.json();
+
+        displayModalPhotos(data);
+
+    } catch (error) {
+        console.error(error);
+    }
 }
 
+
+/* =========================
+   SUPPRESSION
+========================= */
+
+miniGallery.addEventListener("click", async (event) => {
+
+    const button = event.target.closest(".trash-icon");
+
+    if (!button) return;
+
+    const imageId = button.dataset.id;
+
+    try {
+
+        const token = localStorage.getItem("token");
+
+        const response = await fetch(
+            `http://localhost:5678/api/works/${imageId}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Erreur lors de la suppression");
+        }
+
+        // Recharge la galerie de la modale
+        await getModalPhotos();
+        
+        if (window.refreshProjectGallery) {
+        await window.refreshProjectGallery();
+}
+
+        // Recharge la galerie principale
+        // À adapter au nom de ta fonction dans api-request.js
+        // await getWorks();
+
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+
+/* =========================
+   AFFICHAGE MODALE
+========================= */
+
 function displayModalPhotos(photos) {
+
     miniGallery.innerHTML = "";
 
     photos.forEach(photo => {
@@ -51,23 +116,30 @@ function displayModalPhotos(photos) {
         card.classList.add("card-modal");
 
         const container = document.createElement("div");
-        container.className = "image-container";
+        container.classList.add("image-container");
 
-    
         const image = document.createElement("img");
         image.src = photo.imageUrl;
 
         const trashIcon = document.createElement("i");
-        trashIcon.classList.add("fa-solid", "fa-trash-can", "trash-icon", "fa-lg");
-        trashIcon.setAttribute("data-id", photo.id);
+
+        trashIcon.classList.add(
+            "fa-solid",
+            "fa-trash-can",
+            "trash-icon",
+            "fa-lg"
+        );
+
+        trashIcon.dataset.id = photo.id;
 
         container.appendChild(image);
         container.appendChild(trashIcon);
+
         card.appendChild(container);
 
         miniGallery.appendChild(card);
-      
     });
 }
+
 
 getModalPhotos();

@@ -14,3 +14,4 @@ export function closeModal() {
 export function stopPropagation(e) {
     e.stopPropagation();
 }
+
