@@ -1,3 +1,5 @@
+/* Fermeture modale + arret de la propagation */
+
 import { closeModal, stopPropagation } from "./modules.js";
 
 const openModal = function (e) {
@@ -29,9 +31,7 @@ document.querySelectorAll(".js-modal-open").forEach(button => {
 });
 
 
-/* =========================
-   GALERIE MODALE
-========================= */
+/* Recupération des données API */
 
 const miniGallery = document.getElementById("modalGallery");
 
@@ -54,10 +54,7 @@ export async function getModalPhotos() {
     }
 }
 
-
-/* =========================
-   SUPPRESSION
-========================= */
+/* Suppression photo */
 
 miniGallery.addEventListener("click", async (event) => {
 
@@ -102,9 +99,7 @@ miniGallery.addEventListener("click", async (event) => {
 });
 
 
-/* =========================
-   AFFICHAGE MODALE
-========================= */
+/* Affichage de la galerie modale*/
 
 function displayModalPhotos(photos) {
 
