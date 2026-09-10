@@ -61,36 +61,37 @@
 				<button id="addPhoto">Ajouter une photo</button>
 			</div>
 		</aside>
-		
-		<div id="modal2" class="js-modal" aria-hidden="true" style="display: none;" aria-modal="true">
-			<div class="modal-wrapper js-modal-stop">
-				<div id="editionProjet2">
-					<i class="fa-solid fa-arrow-left-long" id="previousModal"></i>
-					<i class="fa-solid fa-x js-modal-close"></i>
+		<aside>
+			<div id="modal2" class="js-modal" aria-hidden="true" style="display: none;" aria-modal="true">
+				<div class="modal-wrapper js-modal-stop">
+					<div id="editionProjet2">
+						<i class="fa-solid fa-arrow-left-long" id="previousModal"></i>
+						<i class="fa-solid fa-x js-modal-close"></i>
+					</div>
+					<p class="modal-title">Ajout photo</p>
+					<form id="addPhotoForm">
+						<div class="photoPreview">
+							<i class="fa-regular fa-image"></i>
+							<label  for="addPhotoButton" id="addPhotoLabel">+ Ajouter photo</label>
+							<input  type="file" id="addPhotoButton" name="image" accept="image/png, image/jpeg">
+							<p class="photo-info">jpg, png : 4mo max</p>
+							<img id="preview" src="" alt="Aperçu de la photo" max-width: 129px;>
+						</div>
+						<div>
+							<label for="title">Titre</label>
+        					<input type="text" id="title" name="title">
+						</div>
+						<div class="border">
+							<label for="category">Catégorie</label>
+        					<select id="category" name="category" value="Catégorie">
+								<option value="" disabled selected></option>
+        					</select>
+						</div>
+						<button id="validateButton" type="submit">Valider</button>
+    				</form>
 				</div>
-				<p class="modal-title">Ajout photo</p>
-				<form id="addPhotoForm">
-					<div class="photoPreview">
-						<i class="fa-regular fa-image"></i>
-						<label for="addPhotoButton" id="addPhotoLabel">+ Ajouter photo</label>
-						<input type="file" id="addPhotoButton" name="image" accept="image/png, image/jpeg" style="display: none;">
-						<p class="photo-info">jpg, png : 4mo max</p>
-					</div>
-					<div>
-						<label for="title">Titre</label>
-        				<input type="text" id="title" name="title">
-					</div>
-					<div class="border">
-					<label for="category">Catégorie</label>
-        			<select id="category" name="category" value="Catégorie">
-						<option value="" disabled selected></option>
-        			</select>
-					</div>
-					<button id="validateButton" type="submit">Valider</button>
-    			</form>
 			</div>
-		</div>
-		
+		</aside>
 		<div id="filter">
 			<button class="filterButton filterAll active">Tous</button>
 			<button class="filterButton filterObject">Objets</button>

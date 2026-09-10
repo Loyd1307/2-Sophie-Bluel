@@ -14,13 +14,19 @@ if (addPhotoButton && modal2) {
 
     modal2
         .querySelector(".js-modal-close")
-        .addEventListener("click", closeModal);
+        .addEventListener("click", () => {
+        resetPhotoForm();
+        closeModal();
+    });
 
-    modal2.addEventListener("click", closeModal);
+    modal2.addEventListener("click", () => {
+    resetPhotoForm();
+    closeModal();
+});
 
-    modal2
-        .querySelector(".modal-wrapper")
-        .addEventListener("click", stopPropagation);
+modal2
+    .querySelector(".modal-wrapper")
+    .addEventListener("click", stopPropagation);
 }
 
 const previousButton = document.getElementById("previousModal");
@@ -37,6 +43,49 @@ previousButton.addEventListener("click", function () {
     modal1.removeAttribute("aria-hidden");
     modal1.setAttribute("aria-modal", "true");
 });
+
+/* Preview de la photo */
+
+const photoInput = document.getElementById("addPhotoButton");
+const preview = document.getElementById("preview");
+const photoPreview = document.querySelector(".photoPreview");
+const photoForm = document.querySelector("#addPhotoForm");
+
+photoInput.addEventListener("change", () => {
+    const file = photoInput.files[0];
+
+    if (file) {
+        preview.src = URL.createObjectURL(file);
+
+        // On affiche la preview
+        preview.style.display = "block";
+
+        // On cache uniquement les autres éléments
+        Array.from(photoPreview.children).forEach((child) => {
+            if (child !== preview) {
+                child.style.display = "none";
+            }
+        });
+     }
+});
+
+
+function resetPhotoForm() {
+    // Reset des champs du formulaire
+    photoForm.reset();
+
+    // Reset de la preview
+    preview.src = "";
+    preview.style.display = "none";
+
+    // Réafficher les éléments de sélection
+    Array.from(photoPreview.children).forEach((child) => {
+        if (child !== preview) {
+            child.style.display = "";
+        }
+    });
+}
+
 
 
 async function getCategories() {
@@ -57,9 +106,7 @@ async function getCategories() {
 
 getCategories();
 
-/* test de la fonction d'ajout de photo */
-
-const photoForm = document.querySelector("#addPhotoForm");
+/* Ajout de photo */
 
 photoForm.addEventListener("submit", async function (v) {
     v.preventDefault();
