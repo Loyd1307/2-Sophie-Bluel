@@ -1,6 +1,9 @@
-/* Fermeture modale + arret de la propagation */
-
 import { closeModal, stopPropagation } from "./modules.js";
+import { getWorks } from "./api.js";
+import { getPhotos } from "./api-request.js";
+
+
+/* Fermeture modale + arret de la propagation */
 
 const openModal = function (e) {
     e.preventDefault();
@@ -35,17 +38,10 @@ document.querySelectorAll(".js-modal-open").forEach(button => {
 
 const miniGallery = document.getElementById("modalGallery");
 
-
 export async function getModalPhotos() {
 
     try {
-        const response = await fetch("http://localhost:5678/api/works");
-
-        if (!response.ok) {
-            throw new Error("Erreur lors de la récupération des photos");
-        }
-
-        const data = await response.json();
+        const data = await getWorks();
 
         displayModalPhotos(data);
 
@@ -86,12 +82,8 @@ miniGallery.addEventListener("click", async (event) => {
         await getModalPhotos();
         
         if (window.refreshProjectGallery) {
-        await window.refreshProjectGallery();
+        await getPhotos();
 }
-
-        // Recharge la galerie principale
-        // À adapter au nom de ta fonction dans api-request.js
-        // await getWorks();
 
     } catch (error) {
         console.error(error);

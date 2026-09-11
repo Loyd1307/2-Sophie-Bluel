@@ -1,7 +1,8 @@
+import { getWorks } from "./api.js";
+
 /* script redirection login/logout */
 
 const token = localStorage.getItem("token");
-
 const login = document.getElementById("login");
 const logout = document.getElementById("logout");
 const edition = document.getElementById("edition");
@@ -37,13 +38,12 @@ const gallery = document.getElementById("projectGallery");
 
 let data = [];
 
-async function getPhotos() {
-    const response = await fetch("http://localhost:5678/api/works");
-
-    data = await response.json();
+export async function getPhotos() {
+    data = await getWorks();
 
     displayPhotos(data);
 }
+
 
 // Rend la fonction accessible depuis modal.js
 window.refreshProjectGallery = getPhotos;
