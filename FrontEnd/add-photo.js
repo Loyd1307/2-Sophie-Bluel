@@ -1,76 +1,56 @@
-import { closeModal, stopPropagation } from "./modules.js";
+import { openModal, closeModal, stopPropagation } from "./modules.js";
 import { getModalPhotos } from "./modal.js";
 import { getCategories, addWork } from "./api.js";
 import { getPhotos } from "./gallery.js";
 
-
 /* ELEMENTS DU DOM */
 
-const addPhotoButton = document.getElementById("addPhoto");
+const openAddPhotoButton = document.getElementById("addPhoto");
 const modal1 = document.getElementById("modal1");
 const modal2 = document.getElementById("modal2");
-
 const previousButton = document.getElementById("previousModal");
-
 const photoInput = document.getElementById("addPhotoButton");
 const preview = document.getElementById("preview");
 const photoPreview = document.querySelector(".photoPreview");
 const photoForm = document.getElementById("addPhotoForm");
 
+let previewUrl = null;
 
 /* OUVERTURE MODALE */
 
-if (addPhotoButton && modal2) {
-    addPhotoButton.addEventListener("click", () => {
+if (openAddPhotoButton && modal2) {
+    openAddPhotoButton.addEventListener("click", () => {
         modal1.style.display = "none";
         modal1.setAttribute("aria-hidden", "true");
         modal1.removeAttribute("aria-modal");
 
-        modal2.style.display = "flex";
-        modal2.removeAttribute("aria-hidden");
-        modal2.setAttribute("aria-modal", "true");
+        openModal(modal2);
     });
 }
-
 
 /* FERMETURE MODALE */
 
-if (modal1) {
-    modal1
-        .querySelector(".js-modal-close")
-        .addEventListener("click", () => {
-            resetPhotoForm();
-            closeModal(modal1);
-        });
+function initModal(modal) {
+    if (!modal) return;
 
-    modal1.addEventListener("click", () => {
+    const closeButton = modal.querySelector(".js-modal-close");
+    const modalWrapper = modal.querySelector(".modal-wrapper");
+
+    closeButton.addEventListener("click", () => {
         resetPhotoForm();
-        closeModal(modal1);
+        closeModal(modal);
     });
 
-    modal1
-        .querySelector(".modal-wrapper")
-        .addEventListener("click", stopPropagation);
-}
-
-if (modal2) {
-    modal2
-        .querySelector(".js-modal-close")
-        .addEventListener("click", () => {
-            resetPhotoForm();
-            closeModal(modal2);
-        });
-
-    modal2.addEventListener("click", () => {
+    modal.addEventListener("click", () => {
         resetPhotoForm();
-        closeModal(modal2);
+        closeModal(modal);
     });
 
-    modal2
-        .querySelector(".modal-wrapper")
-        .addEventListener("click", stopPropagation);
+    modalWrapper.addEventListener("click", stopPropagation);
 }
 
+initModal(modal1);
+initModal(modal2);
 
 /* BOUTON RETOUR */
 
@@ -86,29 +66,39 @@ if (previousButton) {
     });
 }
 
-
 /* PREVIEW PHOTO */
 
-photoInput.addEventListener("change", () => {
-    const file = photoInput.files[0];
+if (photoInput) {
+    photoInput.addEventListener("change", () => {
+        const file = photoInput.files[0];
 
-    if (!file) return;
+        if (!file) return;
 
-    preview.src = URL.createObjectURL(file);
-    preview.style.display = "block";
-
-    Array.from(photoPreview.children).forEach((child) => {
-        if (child !== preview) {
-            child.style.display = "none";
+        if (previewUrl) {
+            URL.revokeObjectURL(previewUrl);
         }
-    });
-});
 
+        previewUrl = URL.createObjectURL(file);
+        preview.src = previewUrl;
+        preview.style.display = "block";
+
+        Array.from(photoPreview.children).forEach((child) => {
+            if (child !== preview) {
+                child.style.display = "none";
+            }
+        });
+    });
+}
 
 /* RESET DU FORMULAIRE */
 
 function resetPhotoForm() {
     photoForm.reset();
+
+    if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+        previewUrl = null;
+    }
 
     preview.src = "";
     preview.style.display = "none";
@@ -119,7 +109,6 @@ function resetPhotoForm() {
         }
     });
 }
-
 
 /* CATEGORIES */
 
@@ -151,7 +140,8 @@ loadCategories();
 
 /* AJOUT D'UN PROJET */
 
-photoForm.addEventListener("submit", async (event) => {
+if (photoForm) {
+    photoForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const image = photoInput.files[0];
@@ -184,4 +174,5 @@ photoForm.addEventListener("submit", async (event) => {
         console.error(error);
         alert("Une erreur est survenue.");
     }
-});
+    });
+}

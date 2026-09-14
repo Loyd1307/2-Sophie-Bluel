@@ -1,4 +1,4 @@
-import { closeModal, stopPropagation } from "./modules.js";
+import { openModal, closeModal, stopPropagation } from "./modules.js";
 import { getWorks, deleteWork } from "./api.js";
 import { getPhotos } from "./gallery.js";
 
@@ -11,19 +11,14 @@ const miniGallery = document.getElementById("modalGallery");
 
 /* OUVERTURE DE LA MODALE */
 
-function openModal(event) {
+function handleOpenModal(event) {
     event.preventDefault();
 
     const modalId = event.currentTarget.getAttribute("href");
     const modal = document.querySelector(modalId);
 
-    if (!modal) return;
-
-    modal.style.display = "flex";
-    modal.removeAttribute("aria-hidden");
-    modal.setAttribute("aria-modal", "true");
+    openModal(modal);
 }
-
 
 /* INITIALISATION DE LA MODALE */
 
@@ -47,7 +42,7 @@ function initModal(modal) {
 document
     .querySelectorAll(".js-modal-open")
     .forEach((button) => {
-        button.addEventListener("click", openModal);
+        button.addEventListener("click", handleOpenModal);
     });
 
 initModal(modal1);
@@ -130,7 +125,9 @@ async function handleDelete(event) {
     }
 }
 
-miniGallery.addEventListener("click", handleDelete);
+if (miniGallery) {
+    miniGallery.addEventListener("click", handleDelete);
+}
 
 getModalPhotos();
 

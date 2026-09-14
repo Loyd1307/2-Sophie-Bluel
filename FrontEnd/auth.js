@@ -41,9 +41,9 @@ if (loginForm) {
             window.location.href = "index.html";
 
         } catch (error) {
-            errorElement.textContent =
-                "Erreur dans l’identifiant ou le mot de passe";
-        }
+    errorElement.textContent = error.message;
+}
+
     });
 }
 

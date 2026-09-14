@@ -18,6 +18,7 @@ export function closeModal(modal) {
     modal.removeAttribute("aria-modal");
 }
 
+/* BLOQUER LA PROPAGATION */
 
 export function stopPropagation(event) {
     event.stopPropagation();
