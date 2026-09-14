@@ -10,11 +10,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="./api-request.js"></script>
+	<script type="module" src="./auth.js"></script>
+	<script type="module" src="./gallery.js"></script>
 	<script type="module" src="./modal.js"></script>
 	<script type="module" src="./add-photo.js"></script>
-	<script type="module" src="./modules.js"></script>
-	<script type="module" src="./api.js"></script>
 </head>
 <body>
 <div id="edition">
@@ -61,42 +60,40 @@
 				<button id="addPhoto">Ajouter une photo</button>
 			</div>
 		</aside>
-		<aside>
-			<div id="modal2" class="js-modal" aria-hidden="true" style="display: none;" aria-modal="true">
-				<div class="modal-wrapper js-modal-stop">
-					<div id="editionProjet2">
-						<i class="fa-solid fa-arrow-left-long" id="previousModal"></i>
-						<i class="fa-solid fa-x js-modal-close"></i>
-					</div>
-					<p class="modal-title">Ajout photo</p>
-					<form id="addPhotoForm">
-						<div class="photoPreview">
-							<i class="fa-regular fa-image"></i>
-							<label  for="addPhotoButton" id="addPhotoLabel">+ Ajouter photo</label>
-							<input  type="file" id="addPhotoButton" name="image" accept="image/png, image/jpeg">
-							<p class="photo-info">jpg, png : 4mo max</p>
-							<img id="preview" src="" alt="Aperçu de la photo" max-width: 129px;>
-						</div>
-						<div>
-							<label for="title">Titre</label>
-        					<input type="text" id="title" name="title">
-						</div>
-						<div class="border">
-							<label for="category">Catégorie</label>
-        					<select id="category" name="category" value="Catégorie">
-								<option value="" disabled selected></option>
-        					</select>
-						</div>
-						<button id="validateButton" type="submit">Valider</button>
-    				</form>
+		<aside id="modal2" class="js-modal" aria-hidden="true" style="display: none;" aria-modal="true">
+			<div class="modal-wrapper js-modal-stop">
+				<div id="editionProjet2">
+					<i class="fa-solid fa-arrow-left-long" id="previousModal"></i>
+					<i class="fa-solid fa-x js-modal-close"></i>
 				</div>
+				<p class="modal-title">Ajout photo</p>
+				<form id="addPhotoForm">
+					<div class="photoPreview">
+						<i class="fa-regular fa-image"></i>
+						<label  for="addPhotoButton" id="addPhotoLabel">+ Ajouter photo</label>
+						<input  type="file" id="addPhotoButton" name="image" accept="image/png, image/jpeg">
+						<p class="photo-info">jpg, png : 4mo max</p>
+						<img id="preview" src="" alt="Aperçu de la photo" max-width: 129px;>
+					</div>
+					<div>
+						<label for="title">Titre</label>
+        				<input type="text" id="title" name="title">
+					</div>
+					<div class="border">
+						<label for="category">Catégorie</label>
+        				<select id="category" name="category" value="Catégorie">
+							<option value="" disabled selected></option>
+        				</select>
+					</div>
+					<button id="validateButton" type="submit">Valider</button>
+    			</form>
 			</div>
 		</aside>
 		<div id="filter">
-			<button class="filterButton filterAll active">Tous</button>
-			<button class="filterButton filterObject">Objets</button>
-			<button class="filterButton filterAppartement">Appartements</button>
-			<button class="filterButton filterHotel">Hotels & restaurants</button>
+			<button class="filterButton filterAll active" data-category="">Tous</button>
+			<button class="filterButton filterObject" data-category="1">Objets</button>
+			<button class="filterButton filterAppartement" data-category="2">Appartements</button>
+			<button class="filterButton filterHotel" data-category="3">Hotels & restaurants</button>
 		</div>
 		<div class="gallery" id="projectGallery">
 		</div>

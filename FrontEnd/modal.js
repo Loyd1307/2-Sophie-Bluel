@@ -1,104 +1,91 @@
 import { closeModal, stopPropagation } from "./modules.js";
-import { getWorks } from "./api.js";
-import { getPhotos } from "./api-request.js";
+import { getWorks, deleteWork } from "./api.js";
+import { getPhotos } from "./gallery.js";
 
 
-/* Fermeture modale + arret de la propagation */
+/* ================================
+   ELEMENTS DOM
+================================ */
 
-const openModal = function (e) {
-    e.preventDefault();
-
-    const target = document.querySelector(
-        e.currentTarget.getAttribute("href")
-    );
-
-    if (!target) return;
-
-    target.style.display = "flex";
-    target.removeAttribute("aria-hidden");
-    target.setAttribute("aria-modal", "true");
-
-    target
-        .querySelector(".js-modal-close")
-        .addEventListener("click", closeModal);
-
-    target.addEventListener("click", closeModal);
-
-    target
-        .querySelector(".modal-wrapper")
-        .addEventListener("click", stopPropagation);
-};
-
-document.querySelectorAll(".js-modal-open").forEach(button => {
-    button.addEventListener("click", openModal);
-});
-
-
-/* Recupération des données API */
-
+const modal1 = document.getElementById("modal1");
 const miniGallery = document.getElementById("modalGallery");
 
+
+/* ================================
+   OUVERTURE DE LA MODALE
+================================ */
+
+function openModal(event) {
+    event.preventDefault();
+
+    const modalId = event.currentTarget.getAttribute("href");
+    const modal = document.querySelector(modalId);
+
+    if (!modal) return;
+
+    modal.style.display = "flex";
+    modal.removeAttribute("aria-hidden");
+    modal.setAttribute("aria-modal", "true");
+}
+
+
+/* ================================
+   INITIALISATION DE LA MODALE
+================================ */
+
+function initModal(modal) {
+    if (!modal) return;
+
+    const closeButton = modal.querySelector(".js-modal-close");
+    const modalWrapper = modal.querySelector(".modal-wrapper");
+
+    closeButton.addEventListener("click", () => {
+        closeModal(modal);
+    });
+
+    modal.addEventListener("click", () => {
+        closeModal(modal);
+    });
+
+    modalWrapper.addEventListener("click", stopPropagation);
+}
+
+document
+    .querySelectorAll(".js-modal-open")
+    .forEach((button) => {
+        button.addEventListener("click", openModal);
+    });
+
+initModal(modal1);
+
+
+/* ================================
+   GALERIE DE LA MODALE
+================================ */
+
 export async function getModalPhotos() {
-
     try {
-        const data = await getWorks();
+        const works = await getWorks();
 
-        displayModalPhotos(data);
+        displayModalPhotos(works);
 
     } catch (error) {
-        console.error(error);
-    }
-}
-
-/* Suppression photo */
-
-miniGallery.addEventListener("click", async (event) => {
-
-    const button = event.target.closest(".trash-icon");
-
-    if (!button) return;
-
-    const imageId = button.dataset.id;
-
-    try {
-
-        const token = localStorage.getItem("token");
-
-        const response = await fetch(
-            `http://localhost:5678/api/works/${imageId}`,
-            {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }
+        console.error(
+            "Erreur lors du chargement de la galerie :",
+            error
         );
-
-        if (!response.ok) {
-            throw new Error("Erreur lors de la suppression");
-        }
-
-        // Recharge la galerie de la modale
-        await getModalPhotos();
-        
-        if (window.refreshProjectGallery) {
-        await getPhotos();
+    }
 }
 
-    } catch (error) {
-        console.error(error);
-    }
-});
 
-
-/* Affichage de la galerie modale*/
+/* ================================
+   AFFICHAGE DES PROJETS
+================================ */
 
 function displayModalPhotos(photos) {
-
     miniGallery.innerHTML = "";
 
-    photos.forEach(photo => {
-
+    photos.forEach((photo) => {
         const card = document.createElement("div");
         card.classList.add("card-modal");
 
@@ -107,6 +94,7 @@ function displayModalPhotos(photos) {
 
         const image = document.createElement("img");
         image.src = photo.imageUrl;
+        image.alt = photo.title;
 
         const trashIcon = document.createElement("i");
 
@@ -119,14 +107,47 @@ function displayModalPhotos(photos) {
 
         trashIcon.dataset.id = photo.id;
 
-        container.appendChild(image);
-        container.appendChild(trashIcon);
-
+        container.append(image, trashIcon);
         card.appendChild(container);
-
         miniGallery.appendChild(card);
     });
 }
 
 
+/* ================================
+   SUPPRESSION D'UN PROJET
+================================ */
+
+async function handleDelete(event) {
+    const button = event.target.closest(".trash-icon");
+
+    if (!button) return;
+
+    const imageId = button.dataset.id;
+
+    try {
+        await deleteWork(imageId);
+
+        // Actualise la galerie de la modale
+        await getModalPhotos();
+
+        // Actualise la galerie principale
+        await getPhotos();
+
+    } catch (error) {
+        console.error(
+            "Erreur lors de la suppression du projet :",
+            error
+        );
+    }
+}
+
+miniGallery.addEventListener("click", handleDelete);
+
+
+/* ================================
+   INITIALISATION
+================================ */
+
 getModalPhotos();
+
