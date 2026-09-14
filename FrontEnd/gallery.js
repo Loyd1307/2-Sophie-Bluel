@@ -1,18 +1,11 @@
 import { getWorks } from "./api.js";
 
-
-/* ================================
-   GALERIE
-================================ */
+/* AFFICHAGE DE LA GALERIE */
 
 const gallery = document.getElementById("projectGallery");
 
 let works = [];
 
-
-/**
- * Récupère les projets et affiche la galerie
- */
 export async function getPhotos() {
     try {
         works = await getWorks();
@@ -25,9 +18,8 @@ export async function getPhotos() {
     }
 }
 
-/**
- * Affiche les projets
- */
+/* CREATION ELEMENTS DE LA GALERIE */
+
 function displayPhotos(photos) {
     gallery.innerHTML = "";
 
@@ -47,17 +39,10 @@ function displayPhotos(photos) {
     });
 }
 
-
-/* ================================
-   FILTRES
-================================ */
+/* FILTRES DE LA GALERIE */
 
 const filterButtons = document.querySelectorAll(".filterButton");
 
-
-/**
- * Filtre les projets par catégorie
- */
 function filterProjects(categoryId) {
     if (categoryId === null) {
         displayPhotos(works);
@@ -72,9 +57,8 @@ function filterProjects(categoryId) {
 }
 
 
-/**
- * Gestion des boutons de filtre
- */
+/* FILTRES DYNAMIQUES */
+
 filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
 
@@ -91,10 +75,5 @@ filterButtons.forEach((button) => {
         button.classList.add("active");
     });
 });
-
-
-/* ================================
-   INITIALISATION
-================================ */
 
 getPhotos();

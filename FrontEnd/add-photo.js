@@ -4,9 +4,7 @@ import { getCategories, addWork } from "./api.js";
 import { getPhotos } from "./gallery.js";
 
 
-/* ================================
-   ELEMENTS DOM
-================================ */
+/* ELEMENTS DU DOM */
 
 const addPhotoButton = document.getElementById("addPhoto");
 const modal1 = document.getElementById("modal1");
@@ -20,9 +18,7 @@ const photoPreview = document.querySelector(".photoPreview");
 const photoForm = document.getElementById("addPhotoForm");
 
 
-/* ================================
-   OUVERTURE MODALE AJOUT
-================================ */
+/* OUVERTURE MODALE */
 
 if (addPhotoButton && modal2) {
     addPhotoButton.addEventListener("click", () => {
@@ -37,9 +33,7 @@ if (addPhotoButton && modal2) {
 }
 
 
-/* ================================
-   FERMETURE MODALE 2
-================================ */
+/* FERMETURE MODALE */
 
 if (modal1) {
     modal1
@@ -78,9 +72,7 @@ if (modal2) {
 }
 
 
-/* ================================
-   RETOUR MODALE 1
-================================ */
+/* BOUTON RETOUR */
 
 if (previousButton) {
     previousButton.addEventListener("click", () => {
@@ -95,9 +87,7 @@ if (previousButton) {
 }
 
 
-/* ================================
-   PREVIEW PHOTO
-================================ */
+/* PREVIEW PHOTO */
 
 photoInput.addEventListener("change", () => {
     const file = photoInput.files[0];
@@ -115,9 +105,7 @@ photoInput.addEventListener("change", () => {
 });
 
 
-/* ================================
-   RESET FORMULAIRE
-================================ */
+/* RESET DU FORMULAIRE */
 
 function resetPhotoForm() {
     photoForm.reset();
@@ -133,9 +121,7 @@ function resetPhotoForm() {
 }
 
 
-/* ================================
-   CATEGORIES
-================================ */
+/* CATEGORIES */
 
 async function loadCategories() {
     try {
@@ -163,9 +149,7 @@ async function loadCategories() {
 loadCategories();
 
 
-/* ================================
-   AJOUT D'UN PROJET
-================================ */
+/* AJOUT D'UN PROJET */
 
 photoForm.addEventListener("submit", async (event) => {
     event.preventDefault();

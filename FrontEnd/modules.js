@@ -1,5 +1,14 @@
+/* OUVERTURE DES MODALES */
 
-/* fermeture modale*/
+export function openModal(modal) {
+    if (!modal) return;
+
+    modal.style.display = "flex";
+    modal.removeAttribute("aria-hidden");
+    modal.setAttribute("aria-modal", "true");
+}
+
+/* FERMETURE DES MODALES */
 
 export function closeModal(modal) {
     if (!modal) return;

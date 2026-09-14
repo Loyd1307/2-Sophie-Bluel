@@ -1,9 +1,7 @@
 const API_URL = "http://localhost:5678/api";
 
 
-/**
- * Récupérer tous les projets
- */
+/* RECUPERATION WORKS */
 export async function getWorks() {
     const response = await fetch(`${API_URL}/works`);
 
@@ -15,9 +13,7 @@ export async function getWorks() {
 }
 
 
-/**
- * Récupérer toutes les catégories
- */
+/* RECUPERATION DES CATHEGORIES */
 export async function getCategories() {
     const response = await fetch(`${API_URL}/categories`);
 
@@ -29,9 +25,7 @@ export async function getCategories() {
 }
 
 
-/**
- * Supprimer un projet
- */
+/* SUPPRESSION IMAGE */
 export async function deleteWork(id) {
     const token = localStorage.getItem("token");
 
@@ -48,9 +42,7 @@ export async function deleteWork(id) {
 }
 
 
-/**
- * Ajouter un projet
- */
+/* AJOUTER UNE IMAGE */
 export async function addWork(formData) {
     const token = localStorage.getItem("token");
 

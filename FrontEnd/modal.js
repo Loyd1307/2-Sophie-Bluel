@@ -3,17 +3,13 @@ import { getWorks, deleteWork } from "./api.js";
 import { getPhotos } from "./gallery.js";
 
 
-/* ================================
-   ELEMENTS DOM
-================================ */
+/* ELEMENTS DU DOM */
 
 const modal1 = document.getElementById("modal1");
 const miniGallery = document.getElementById("modalGallery");
 
 
-/* ================================
-   OUVERTURE DE LA MODALE
-================================ */
+/* OUVERTURE DE LA MODALE */
 
 function openModal(event) {
     event.preventDefault();
@@ -29,9 +25,7 @@ function openModal(event) {
 }
 
 
-/* ================================
-   INITIALISATION DE LA MODALE
-================================ */
+/* INITIALISATION DE LA MODALE */
 
 function initModal(modal) {
     if (!modal) return;
@@ -59,9 +53,7 @@ document
 initModal(modal1);
 
 
-/* ================================
-   GALERIE DE LA MODALE
-================================ */
+/* GALERIE DE LA MODALE */
 
 export async function getModalPhotos() {
     try {
@@ -78,9 +70,7 @@ export async function getModalPhotos() {
 }
 
 
-/* ================================
-   AFFICHAGE DES PROJETS
-================================ */
+/* AFFICHAGE DES PROJETS */
 
 function displayModalPhotos(photos) {
     miniGallery.innerHTML = "";
@@ -114,9 +104,7 @@ function displayModalPhotos(photos) {
 }
 
 
-/* ================================
-   SUPPRESSION D'UN PROJET
-================================ */
+/* SUPPRESSION D'UN PROJET */
 
 async function handleDelete(event) {
     const button = event.target.closest(".trash-icon");
@@ -143,11 +131,6 @@ async function handleDelete(event) {
 }
 
 miniGallery.addEventListener("click", handleDelete);
-
-
-/* ================================
-   INITIALISATION
-================================ */
 
 getModalPhotos();
 

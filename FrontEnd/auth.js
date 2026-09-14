@@ -1,6 +1,4 @@
-/* ================================
-   CONNEXION
-================================ */
+/* CONNEXION */
 
 const loginForm = document.getElementById("loginForm");
 
@@ -50,9 +48,7 @@ if (loginForm) {
 }
 
 
-/* ================================
-   INTERFACE UTILISATEUR
-================================ */
+/* INTERFACE UTILISATEUR */
 
 const loginButton = document.getElementById("login");
 const logoutButton = document.getElementById("logout");
@@ -75,10 +71,7 @@ if (edition && filter && editionProjet) {
     editionProjet.style.display = isLoggedIn ? "flex" : "none";
 }
 
-
-/* ================================
-   DECONNEXION
-================================ */
+/* DECONNEXION */
 
 if (logoutButton) {
     logoutButton.addEventListener("click", () => {
