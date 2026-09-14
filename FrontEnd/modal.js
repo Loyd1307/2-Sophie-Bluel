@@ -50,11 +50,13 @@ initModal(modal1);
 
 /* GALERIE DE LA MODALE */
 
-export async function getModalPhotos() {
+export async function getModalPhotos(updatedWorks = null) {
     try {
-        const works = await getWorks();
+        const works = updatedWorks || await getWorks();
 
         displayModalPhotos(works);
+
+        return works;
 
     } catch (error) {
         console.error(
@@ -63,7 +65,6 @@ export async function getModalPhotos() {
         );
     }
 }
-
 
 /* AFFICHAGE DES PROJETS */
 
@@ -106,16 +107,16 @@ async function handleDelete(event) {
 
     if (!button) return;
 
-    const imageId = button.dataset.id;
+    const workId = button.dataset.id;
 
     try {
-        await deleteWork(imageId);
+        await deleteWork(workId);
 
-        // Actualise la galerie de la modale
-        await getModalPhotos();
+        const works = await getModalPhotos();
 
-        // Actualise la galerie principale
-        await getPhotos();
+        if (works) {
+            await getPhotos(works);
+        }
 
     } catch (error) {
         console.error(

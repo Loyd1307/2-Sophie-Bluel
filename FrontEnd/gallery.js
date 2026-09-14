@@ -6,10 +6,14 @@ const gallery = document.getElementById("projectGallery");
 
 let works = [];
 
-export async function getPhotos() {
+export async function getPhotos(updatedWorks = null) {
     try {
-        works = await getWorks();
+        works = updatedWorks || await getWorks();
+
         displayPhotos(works);
+
+        return works;
+
     } catch (error) {
         console.error(
             "Erreur lors du chargement des projets :",

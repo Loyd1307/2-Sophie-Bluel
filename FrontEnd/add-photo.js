@@ -163,12 +163,15 @@ if (photoForm) {
         await addWork(formData);
 
         // Actualisation des deux galeries
-        await getModalPhotos();
-        await getPhotos();
+        const works = await getModalPhotos();
 
-        resetPhotoForm();
+    if (works) {
+    await getPhotos(works);
+    }
 
-        alert("Photo ajoutée avec succès !");
+    resetPhotoForm();
+
+    alert("Photo ajoutée avec succès !");
 
     } catch (error) {
         console.error(error);
