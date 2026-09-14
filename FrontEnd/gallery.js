@@ -25,7 +25,6 @@ export async function getPhotos() {
     }
 }
 
-
 /**
  * Affiche les projets
  */
