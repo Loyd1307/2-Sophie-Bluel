@@ -177,7 +177,6 @@ li:hover {
 	width: 50%;
 margin: auto;
 }
-
 #contact > * {
 	text-align: center;
 
@@ -192,13 +191,13 @@ margin: auto;
 	flex-direction: column;
 }
 
-#contact input {
+input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+label {
 	margin: 2em 0 1em 0;
 }
 #contact textarea {
